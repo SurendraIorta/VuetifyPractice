@@ -41,6 +41,7 @@ export default {
         }
     },
     mounted(){
+        this.$store.commit("UPDATE_VIEW","ListView");
          if(!commonFunctions.isNetworkConnected){
             this.agentSelectorDisabled   =   true;
             alert("You are not connected to internet.","Internet Issue")

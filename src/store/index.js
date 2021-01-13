@@ -2,8 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex);
 
+import state from './state';
 import getters from './getters';
-import mutations from './mutations';
+import * as mutations from './mutations';
 
 const loadState = () => {
     try {
@@ -40,7 +41,7 @@ const loadState = () => {
   store.watch(
     (state) => {
         console.log('from store watcher', state);
-        if(state.links.fullPath !== '/login'){
+        if( state && state.links && state.links.fullPath !== '/'){
             saveState(state);
         }
     }

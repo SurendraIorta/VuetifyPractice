@@ -227,6 +227,7 @@ export default {
             this.$router.push('/tableview');
         },  
       updateReferenceName(){
+          console.log("Store Obj - ",this.$store);
           this.referenceName    =   "Updated"
       },  
       createNewLead () {
@@ -291,24 +292,6 @@ export default {
       },
       updateAge(event){
           this.age  =   this.calculateAge(event)
-      },
-      calculateAge(dob){
-        var dateString = dob;
-        var today = new Date();
-        var birthDate = new Date(dateString);
-        if(today.getFullYear() <= birthDate.getFullYear() && today.getMonth() <= birthDate.getMonth() && today.getDate() <= birthDate.getDate() ){
-            alert("Please Enter valid date");
-            this.date_of_birth  =   new Date();
-            this.dateFormatted  =   this.formatDate(new Date().toISOString().substr(0, 10));
-            this.age            =   0;
-        }else{
-            var age = today.getFullYear() - birthDate.getFullYear();
-            var m = today.getMonth() - birthDate.getMonth();
-            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-                age--;
-            }
-            return age;
-        }
       }
     },
     computed: {
@@ -323,6 +306,7 @@ export default {
     },
     created(){
         console.log(allListOptions);
+        this.$store.commit("UPDATE_VIEW","AddNewLeadView");
         if(!navigator.onLine && commonFunctions.isNetworkConnected){
             this.agentSelectorDisabled   =   true;
             alert("You are not connected to internet.","Internet Issue")

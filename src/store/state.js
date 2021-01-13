@@ -1,3 +1,6 @@
 export default {
-    currentView :   ''
+    currentView :   'ListView',
+    links       :   {
+        "fullPath"  :   "/"
+    }
 }

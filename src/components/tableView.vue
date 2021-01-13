@@ -57,6 +57,7 @@ export default {
         },
     },
     created(){
+        this.$store.commit("UPDATE_VIEW","TableView");
         if(commonFunctions.isNetworkConnected){
             axios.get("https://reqres.in/api/users?page=2")
             .then((res)=>{
